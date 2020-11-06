@@ -14,6 +14,10 @@ from dateutil.relativedelta import relativedelta
 from matplotlib.patches import Rectangle
 from matplotlib.cbook import get_sample_data
 import os
+
+
+"""skewT_functions.py: This class has functions to extract data of atmospheric soundings from the University of Wyoming website
+(http://weather.uwyo.edu/upperair/sounding.html), and plot the skew-T./"""
 class skewT_functions:
 
     def __init__(self):
