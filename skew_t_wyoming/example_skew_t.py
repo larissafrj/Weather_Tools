@@ -3,6 +3,9 @@ import datetime
 from skewT_functions import skewT_functions
 skewT_functions = skewT_functions()
 
+__author__ = "Larissa de Freitas Ramos Jacinto"
+__email__ = "larissafreita@gmail.com"
+
 """example_skew_t.py: This code has an example of application to the functions implemented in skewT_functions.py."""
 
 date = datetime.datetime(2020,8,6,0)
