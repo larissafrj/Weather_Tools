@@ -7,9 +7,10 @@ __author__ = "Larissa de Freitas Ramos Jacinto"
 __email__ = "larissafreita@gmail.com"
 
 """example_boxplot.py: 
-This routine generates boxplot graphs from idealized data of wind speed."""
+This routine generates boxplot graphs from using a dataframe with random values of wind speed."""
 
-dado = pd.read_csv('TORREA10.csv', sep = ',', na_values='nan')
+
+dataframe = pd.read_csv('example_boxplot.csv', sep = ';')
 
 def config_boxplot(x,y,dataframe,axis):
     return sns.boxplot(x = x,y = y, data=dataframe,ax = axis, color="white",\
@@ -28,9 +29,9 @@ def config_fig_boxplot(x, y, dataframe, xticks, labels,fig_name):
     save_figure(fig_name)
 
 xticks = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
-labels = ['Horas', 'Intensidade do Vento']
-config_fig_boxplot('Hora','Int', dado, xticks, labels,'example_hourly') 
+labels = ['Hour', 'Wind Speed']
+config_fig_boxplot('Hour','Int', dataframe, xticks, labels,'example_hourly') 
 
-xticks = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']
-labels = ['Meses', 'Intensidade do Vento']
-config_fig_boxplot('Mes','Int', dado, xticks, labels,'example_monthly') 
+xticks = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+labels = ['Month', 'Wind Speed']
+config_fig_boxplot('Month','Int', dataframe, xticks, labels,'example_monthly') 
