@@ -10,7 +10,19 @@ __email__ = "larissafreita@gmail.com"
 This routine generates boxplot graphs from using a dataframe with random values of wind speed."""
 
 
-dataframe = pd.read_csv('example_boxplot.csv', sep = ';')
+#dataframe = pd.read_csv('example_boxplot.csv', sep = ';')
+""""
+Example using a Dataset from Kaggle 
+ https://www.kaggle.com/nicholasjhana/energy-consumption-generation-prices-and-weather
+
+"""
+dataframe = pd.read_csv('../Dataset_from_Kaggle/weather_features.csv', sep = ',',na_values='NaN')
+
+#Selecting only Seville data.
+dataframe = dataframe[dataframe.city_name =='Valencia'].reset_index(drop = True)
+
+dataframe.dt_iso = pd.to_datetime(dataframe.dt_iso,format ='%Y-%m-%d %H:%M:%S%z', utc =True)
+dataframe.set_index('dt_iso', inplace=True)
 
 def config_boxplot(x,y,dataframe,axis):
     return sns.boxplot(x = x,y = y, data=dataframe,ax = axis, color="white",\
@@ -30,8 +42,16 @@ def config_fig_boxplot(x, y, dataframe, xticks, labels,fig_name):
 
 xticks = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
 labels = ['Hour', 'Wind Speed']
-config_fig_boxplot('Hour','Int', dataframe, xticks, labels,'example_hourly') 
+config_fig_boxplot(dataframe.index.hour,dataframe.wind_speed, dataframe, xticks, labels,'Valencia_hourly_wnd_spd') 
 
 xticks = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 labels = ['Month', 'Wind Speed']
-config_fig_boxplot('Month','Int', dataframe, xticks, labels,'example_monthly') 
+config_fig_boxplot(dataframe.index.month,dataframe.wind_speed, dataframe, xticks, labels,'Valencia_monthly_wnd_spd') 
+
+xticks = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
+labels = ['Hour', 'Temperature']
+config_fig_boxplot(dataframe.index.hour,dataframe.temp-273, dataframe, xticks, labels,'Valencia_hourly_temp') 
+
+xticks = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+labels = ['Month', 'Temperature']
+config_fig_boxplot(dataframe.index.month,dataframe.temp-273, dataframe, xticks, labels,'Valencia_monthly_temp') 
