@@ -9,10 +9,19 @@ os.chdir(os.getcwd()+'/windrose/')
 from windrose_functions import Windrose_Functions
 windrose_functions = Windrose_Functions()
 
-mydateparser = lambda x: datetime.datetime.strptime(x, '%Y %m %d %H')
-dataframe = pd.read_csv('example_windrose.csv', sep = ';',na_values='NaN',parse_dates={'Date': ['Year','Month','Day','Hour']},\
-    date_parser= mydateparser, index_col = 'Date')
+""""
+Example using a Dataset from Kaggle 
+ https://www.kaggle.com/nicholasjhana/energy-consumption-generation-prices-and-weather
+
+"""
+dataframe = pd.read_csv('../Dataset_from_Kaggle/weather_features.csv', sep = ',',na_values='NaN')
+
+#Selecting only Seville data.
+dataframe = dataframe[dataframe.city_name =='Seville'].reset_index(drop = True)
 
 
-windrose_functions.subplot_seasons(dataframe,'Dir','Int', np.arange(1, 10, step=2),'example_seasons')
-windrose_functions.subplot_daily_cycle(dataframe,'Dir','Int', np.arange(1, 10, step=2),'example_daily')
+dataframe.dt_iso = pd.to_datetime(dataframe.dt_iso,format ='%Y-%m-%d %H:%M:%S%z', utc =True)
+dataframe.set_index('dt_iso', inplace=True)
+
+windrose_functions.subplot_seasons(dataframe,'wind_deg','wind_speed', np.arange(5, 30, step=5),'Seville_seasons')
+windrose_functions.subplot_daily_cycle(dataframe,'wind_deg','wind_speed', np.arange(5, 30, step=5),'Seville_daily')
