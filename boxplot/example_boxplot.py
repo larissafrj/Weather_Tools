@@ -7,7 +7,8 @@ __author__ = "Larissa de Freitas Ramos Jacinto"
 __email__ = "larissafreita@gmail.com"
 
 """example_boxplot.py: 
-This routine generates boxplot graphs from using a dataframe with random values of wind speed."""
+This routine generates boxplot graphs from using a dataset of weather variables
+available in Kaggle.com."""
 
 
 #dataframe = pd.read_csv('example_boxplot.csv', sep = ';')
