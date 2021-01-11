@@ -34,4 +34,28 @@ Codes to catch atmospheric soundings data and plot the skew-T graph.
 
 <h3>boxplot/</h3>
 
+Codes to boxplot graphs (Daily and Monthy) using a dataset of weather variables
+available in Kaggle.com. (https://www.kaggle.com/nicholasjhana/energy-consumption-generation-prices-and-weather)
+
+example_boxplot.py - This code has an example of boxplot graphs of wind speed and temperature measured in Valencia, Spain.
+
 <h3>windrose/</h3>
+
+Codes to windrose graphs (Daily and Monthy) using a dataset of weather variables
+available in Kaggle.com. (https://www.kaggle.com/nicholasjhana/energy-consumption-generation-prices-and-weather)
+
+plot_windroses.py - An example of daily and monthy windroses using wind data measured in Seville, Spain.
+windrose_functions.py - This class has functions that generates subplots of windroses graphs based on daily cycle and the seasons of year.
+
+<h3>synoptic_charts/</h3>
+
+synoptic_charts_functions.py: This class has functions to download synoptic charts from 
+Marinha and CPTEC websites. 
+
+example_synoptic_charts.py: An example of the aplication to the Synoptic_Charts_functions.py.
+
+<h3>GFS_maps/</h3>
+
+PlotGFS_functions.py: This class has functions for plot weather maps using GFS model data.
+
+PlotGFS_example.py: This code has an example of application to the functions implemented in PlotGFS_functions.py
